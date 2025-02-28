@@ -1,5 +1,7 @@
-import "package:expense_manager/drawerscreen.dart";
-import "package:flutter/material.dart";
+import 'package:expense_manager/ChangeNotifier.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'drawerscreen.dart';
 
 class MyCategory extends StatefulWidget {
   const MyCategory({super.key});
@@ -8,15 +10,10 @@ class MyCategory extends StatefulWidget {
   State createState() => _MyCategory();
 }
 
-class _MyCategory extends State {
-  List<Map<String, String>> categories = [
-    {
-      "assets/images/Medicine.png": "Medicine",
-    },
-    {"assets/images/Food.png": "Food"},
-    {"assets/images/Fuel.png": "Fuel"},
-    {"assets/images/Shopping.png": "Shopping"},
-  ];
+class _MyCategory extends State<MyCategory> {
+  final TextEditingController _imageUrlController = TextEditingController();
+  final TextEditingController _categoryNameController = TextEditingController();
+
   void addCategoryBottomSheet() {
     showModalBottomSheet(
       isScrollControlled: true,
@@ -46,9 +43,7 @@ class _MyCategory extends State {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
               const Row(
                 children: [
                   Text(
@@ -61,15 +56,14 @@ class _MyCategory extends State {
                 ],
               ),
               TextFormField(
+                controller: _imageUrlController,
                 decoration: InputDecoration(
                   hintText: "Enter URL",
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(9)),
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
               const Row(
                 children: [
                   Text(
@@ -82,19 +76,23 @@ class _MyCategory extends State {
                 ],
               ),
               TextFormField(
+                controller: _categoryNameController,
                 decoration: InputDecoration(
                   hintText: "Enter Category",
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(9)),
                 ),
               ),
-              const SizedBox(
-                height: 30,
-              ),
-              //Add button
+              const SizedBox(height: 30),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  final imageUrl = _imageUrlController.text;
+                  final categoryName = _categoryNameController.text;
+                  if (imageUrl.isNotEmpty && categoryName.isNotEmpty) {
+                    Provider.of<CategoryProvider>(context, listen: false)
+                        .addCategory(imageUrl, categoryName);
+                    Navigator.of(context).pop();
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromRGBO(14, 161, 125, 1),
@@ -107,9 +105,7 @@ class _MyCategory extends State {
                       color: Color.fromRGBO(255, 255, 255, 1)),
                 ),
               ),
-              const SizedBox(
-                height: 15,
-              ),
+              const SizedBox(height: 15),
             ],
           ),
         );
@@ -117,8 +113,7 @@ class _MyCategory extends State {
     );
   }
 
-  /// Delete Category AlertBox
-  void showMyDialog() {
+  void showMyDialog(int index) {
     showDialog(
       barrierDismissible: false,
       barrierColor: const Color.fromRGBO(0, 0, 0, 0.2),
@@ -152,6 +147,8 @@ class _MyCategory extends State {
           actions: [
             GestureDetector(
               onTap: () {
+                Provider.of<CategoryProvider>(context, listen: false)
+                    .deleteCategory(index);
                 Navigator.of(context).pop();
               },
               child: Container(
@@ -172,8 +169,6 @@ class _MyCategory extends State {
                 ),
               ),
             ),
-
-            /// Containers of delete and cancel
             GestureDetector(
               onTap: () {
                 Navigator.of(context).pop();
@@ -204,6 +199,8 @@ class _MyCategory extends State {
 
   @override
   Widget build(BuildContext context) {
+    final categories = Provider.of<CategoryProvider>(context).categories;
+
     return Scaffold(
       backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
       appBar: AppBar(
@@ -230,11 +227,11 @@ class _MyCategory extends State {
           crossAxisSpacing: 10,
         ),
         padding: const EdgeInsets.all(10),
-        itemCount: 4,
+        itemCount: categories.length,
         itemBuilder: (context, index) {
           return GestureDetector(
             onLongPress: () {
-              showMyDialog();
+              showMyDialog(index);
             },
             child: Container(
               height: 100,
@@ -257,13 +254,11 @@ class _MyCategory extends State {
                       height: 74,
                       width: 74,
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    const SizedBox(height: 10),
                     Text(
                       categories[index].values.toList().first,
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.w600),
                     )
                   ],
                 ),
@@ -282,9 +277,7 @@ class _MyCategory extends State {
         icon: const Icon(Icons.add_circle_rounded,
             color: Color.fromRGBO(14, 161, 125, 1), size: 33),
         onPressed: () {
-          setState(() {
-            addCategoryBottomSheet();
-          });
+          addCategoryBottomSheet();
         },
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(67)),
       ),
