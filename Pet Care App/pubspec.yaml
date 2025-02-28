@@ -1,0 +1,62 @@
+name: pet_care_app
+description: "A new Flutter project."
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ">=3.3.1 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  google_fonts: ^6.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/Group 12.png
+    - assets/Brandmark Logo.png
+    - assets/image.png
+    - assets/image (1).png
+    - assets/Frame 2016.jpeg
+    - assets/image (20).png
+    - assets/image (2).png
+    - assets/image (3).png
+    - assets/image (4).png
+    - assets/image (5).png
+    - assets/image (21).png
+    - assets/image (6).png
+    - assets/image (22).png
+    - assets/image (7).png
+    - assets/image (8).png
+    - assets/image (9).png
+    - assets/image (10).png
+    - assets/image (11).png
+    - assets/image (23).png
+    - assets/image (13).png
+    - assets/image (14).png
+    - assets/image (15).png
+    - assets/image (16).png
+    - assets/image (17).png
+    - assets/image (18).png
+    - assets/image (19).png
+    - assets/image (12).png
+    - assets/fd6cf35dddb3adb35961cb24b70a32e7.jpeg
+    - assets/4e85b64112706e2f07fb23d7c22bbc3b.jpeg
+    - assets/08da81d0849d42dada82fb903f5ffe1b.jpeg
+    - assets/bcb7370091eeae8a5125162ac1992688.jpeg
+    - assets/6b353775af9c135014e27d72db6acf95.jpeg
+    - assets/2b5f027d582118fb1b827dae9b766599.jpeg
+    - assets/shopimage/pets.png
+    - assets/shopimage/accessory.png
+    - assets/shopimage/clothes.png
+    - assets/shopimage/foods.png
+    - assets/shopimage/healthy.png
+    - assets/shopimage/toys.png
+    - assets/shopimage/grooming.png
+    - assets/shopimage/training4.png

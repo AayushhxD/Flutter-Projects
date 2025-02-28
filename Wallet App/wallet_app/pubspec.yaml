@@ -1,0 +1,68 @@
+name: wallet_app
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+dependencies:
+  country_codes: ^3.1.0+2
+  flutter:
+    sdk: flutter
+  google_fonts: ^6.2.1
+  intl_phone_field: ^3.2.0
+  animated_bottom_navigation_bar: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+   - assets/splash_image.png
+   - assets/icon.png
+   - assets/Netflix.png
+   - assets/Nike.png
+   - assets/apple_logo.png
+   - assets/Starbuck.png
+   - assets/Spotify.png
+   - assets/Topup.png
+   - assets/amazon.png
+   - assets/mobile_icon.png
+   - assets/apple_logo.png
+   - assets/facebook_logo.png
+   - assets/google_logo.png
+   - assets/regi_image.png
+   - assets/profile_pic/profile_pic.png
+   - assets/topup_arrow.png
+   - assets/transfer.png
+   - assets/withdraw_arror.png
+   - assets/transaction/latest_trans_1.png
+   - assets/appbar_icon/cards.png
+   - assets/appbar_icon/history.png
+   - assets/appbar_icon/home.png
+   - assets/appbar_icon/more.png
+   - assets/search.png 
+   - assets/filter.png
+   - assets/about.png
+   - assets/analytics.png
+   - assets/contact_us.png
+   - assets/help1.png
+   - assets/paybills.png
+   - assets/transaction/transfer.png 
+   - assets/transaction/withdraw.png
+   - assets/profile.png
+   - assets/mobile.png
+   - assets/password.png
+   - assets/email.png
+   - assets/shield.png
+   - assets/card/Ellipse1 card.png
+   - assets/card/Ellipse2 card.png
+   - assets/card/Ellipse3 card.png
+   - assets/card/wifi.png
+   - assets/secure_pay.png
+   - assets/payment_done_image.png
+   - assets/transfer_fail.png

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "759125997561",
+    "project_id": "routegen-e3eb1",
+    "storage_bucket": "routegen-e3eb1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:759125997561:android:f2fcf6439ceb6d20246f28",
+        "android_client_info": {
+          "package_name": "com.example.bus_travel_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKbVMDYQ4D99iNu9j9K0ndc8gj0_mj5uY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
